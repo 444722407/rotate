@@ -1,0 +1,262 @@
+@charset "utf-8";
+
+@import url('https://fonts.cdnfonts.com/css/sf-ui-display');
+body{
+margin: 0; color: #333;
+font-family: 'SF UI Display', sans-serif;;
+line-height: 1.6; background: #fff;
+}
+ul, ol{margin: 0; padding-left: 0; list-style: none;}
+ul li, ol li{vertical-align: middle;}
+dl,  p{margin: 0;} dd{margin-left: 0;}
+h1, h2, h3, h4, h5, h6{margin: 0; font-weight: normal;}
+strong{ font-weight: bold; }
+em {font-style: italic;}
+img{ display: block; border: 0;}
+a, a:link, a:visited, a:active, a:hover{text-decoration:none;} a{color: #333;}
+a,button,input{-webkit-tap-highlight-color:rgba(0,0,0,.2);font-family: "Microsoft Yahei", sans-serif;}
+select{-webkit-appearance: none; -moz-appearance: none;}
+input[type="submit"]{cursor:pointer;}
+input[type="email"], input[type="number"], input[type="password"], input[type="tel"], input[type="url"], input[type="text"]{-webkit-tap-highlight-color:rgba(0,0,0,0);}
+input:focus, select:focus, textarea:focus, button:focus{outline: none;}
+input, textarea{padding: 0; font-size: .875rem; border-radius: 0; border: 0; resize: none;}
+textarea{-webkit-tap-highlight-color:rgba(0,0,0,0);}
+em,i{font-style: normal;}
+table {border-collapse: collapse;}
+button{border: 0;}
+html,body {
+    -webkit-text-size-adjust: 100% !important;
+    -webkit-overflow-scrolling: touch;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+body{
+    position: relative;
+    background: url(../img/bg.jpg) no-repeat left top/cover #5c09da; 
+}
+.show_rules{
+    position: absolute;
+    right: 0;
+    top: 0.6667rem;
+    width: 2.5333rem;
+    height: 0.9067rem;
+    background: url(../img/icon_showrule.png) no-repeat center/cover;
+    font-size: 0.4rem;color: #6600b9;font-weight: bold;
+    text-align: center;
+    line-height: 0.9067rem;
+    text-indent: 0.2667rem;
+}
+
+.title_box{
+    padding-top: 1.84rem;
+}
+.title_box >img{
+    width: 8.8rem;
+    margin: 0 auto;
+}
+.game_box{
+    position: relative;
+}
+.badge{
+    position: absolute;
+    right: 0.72rem;
+    top: 1.2267rem;
+    width: 1.44rem;height: 0.96rem;
+    background: url(../img/icon_badge.png) no-repeat center/cover;
+}
+.game_numbers_box{
+    display:flex;
+    margin: 0.5333rem auto 0.4rem;
+}
+.game_numbers{
+    position: relative;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0 0.8rem;
+    text-align: center;
+    font-size: 0.3733rem;color: #fff;
+    height: 0.96rem;
+    line-height:0.96rem;
+    border-radius: 0.96rem;
+    background-color: #5651ec;
+}
+.number{
+    font-size: 0.5867rem;color: #ffe506;
+    margin: 0 0.1333rem;
+    font-family: STHeiti;
+}
+.game_numbers::after{
+    position: absolute;
+    content: "";
+    bottom: -14px;
+    left: 50%;
+    margin-left: -8px;
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;
+    border-top-color:#5651ec;
+}
+
+.game_shadow{
+    margin: 0 auto;
+    width: 8.9333rem;
+    height: 8.9333rem;
+    background: url(../img/game_shadow.png) no-repeat center/100% 100%;
+}
+.game_bg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 8.7733rem;
+    height: 8.7733rem;
+    background: url(../img/game_bg.png) no-repeat center/100% 100%;
+    margin: 0 auto;
+    position: relative;
+}
+.game_badge{
+    position: absolute;
+    width: 1.84rem;height: 1.4667rem;
+    background: url(../img/game_badge.png) no-repeat center/100% 100%;
+    top: 3px;
+    z-index: 3;
+}
+.game_light{
+    will-change: background;
+    position: absolute;
+    width: 8.3733rem;
+    height: 8.3733rem;
+    background: url(../img/game_light.png) no-repeat;
+    background-size: cover;
+    z-index: 2;
+    animation: light .5s steps(2,end) infinite alternate;
+}
+@keyframes light{
+    0%{
+        background-position: 0 0;
+    }
+    100%{
+        background-position: -16.7733rem 0;
+    }
+}
+.game_panel{
+    will-change: tra;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 7.2667rem;
+    height: 7.2667rem;
+    background: url(../img/panel_bg.png) no-repeat center/100% 100%;
+}
+.game_play{
+    position: absolute;
+    width: 2.8667rem;
+    height: 2.8667rem;
+}
+.game_play >img{
+    width: 100%;height: 100%;
+}
+.game_list{
+    width: 100%;height: 100%;
+    position: relative;
+}
+.game_item{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 3.3333rem;
+    height: 3.6267rem;
+    font-size: 0.32rem;color: #fe009e;
+}
+.icon_masonry{
+    display: block;
+    width: 0.8267rem;height: 0.72rem;
+    background: url(../img/icon_masonry.png) no-repeat center/cover;
+    margin-top: 0.1333rem;
+}
+.game_item:nth-child(1){
+    top: -0.4rem;
+    left: 50%;
+    margin-left: -1.6667rem;
+}
+
+.game_item:nth-child(2){
+    top: 0.7333rem;
+    left: 3.9667rem;
+    transform: rotate(60deg);
+}
+.game_item:nth-child(3){
+    top: 2.9333rem;
+    left: 3.9667rem;
+    transform: rotate(120deg);
+}
+.game_item:nth-child(4){
+    bottom: -0.4rem;
+    left: 50%;
+    margin-left: -1.6667rem;
+    transform: rotate(180deg);
+}
+
+.game_item:nth-child(5){
+    top: 0.7333rem;
+    right: 3.9667rem;
+    transform: rotate(-60deg);
+}
+.game_item:nth-child(6){
+    top: 2.9333rem;
+    right: 3.9667rem;
+    transform: rotate(-120deg);
+}
+.show_records{
+    position: absolute;
+    right: 0;
+    bottom: -0.8rem;
+    width: 3.6rem;
+    height:0.9067rem;
+    background: url(../img/icon_showrecord.png) no-repeat center/cover;
+    font-size: 0.3733rem;color: #823d01;
+    text-align: center;
+    line-height: 0.9067rem;
+    text-indent: 0.2667rem;
+}
+.rewards_box{
+    margin: 1.0667rem 0.4rem 0;
+    background-color: #fff;
+    border-radius: 0.16rem;
+    padding: 0 0.4rem;
+}
+.rewards_box .reward_hd{
+    height: 1.12rem;
+    border-bottom: 1px solid #e8e8e8;
+    font-size: 0.3733rem;
+    display: flex;
+    align-items: center;
+}
+
+.rewards_box .reward_hd .title{
+    color: #7200cf;font-weight: bold;
+}
+.rewards_box .reward_hd .time_box{
+   color: #919191;
+   margin-left: auto;
+}
+/*电脑访问优化*/
+@media only screen and (min-width: 1024px){
+    html{
+        position: relative; 
+        width: 375px; 
+        height: 100%; margin: 0 auto; background: #ccc;
+        font-size: 37.5px !important;
+    }
+ 
+    }
+    
+    
+  
