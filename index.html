@@ -16,24 +16,26 @@
 
 <body>
     <div id="app">
-        <div class="show_rules">Game rules</div>
+        <div class="show_rules" @click="this.is_rules = true;">Game rules</div>
         <div class="title_box">
             <img src="./img/title.png" alt="">
         </div>
         <div class="game_box">
             <div class="game_numbers_box">
-                <p class="game_numbers">you have <span class="number">8</span> more chances</p>
+                <p class="game_numbers">you have <span class="number">{{have_numbers}}</span> more chances</p>
             </div> 
-            <div class="show_records">Draw Records  >></div>
+            <div class="show_records"  @click="this.is_record = true;">Draw Records  >></div>
             <div class="badge"></div>
             <div class="game_shadow">
                 <div class="game_bg">
                     <div class="game_badge"></div>
                     <div class="game_light"></div>
-                    <div class="game_panel">
-                        <div class="game_play">
+                    <div class="game_panel" :style="`transform:rotate(${rotate_num}deg)`">
+
+                        <div class="game_play" @click="play">
                             <img src="./img/play_go.png" alt="">
                         </div>
+
                         <ul class="game_list">
                             <li class="game_item">
                                 100 diamonds
@@ -70,9 +72,178 @@
                 <p class="title">Additional Rewards</p>
                 <p class="time_box">Reset at <span class="time">0:00</span> every day</p>
             </div>
+            <div class="reward_bd">
+                <ul class="reward_list">
+                    <li :class="['reward_item',play_numbs >= 10?'active':'']">
+                        <img :src="play_numbs >= 10?'./img/reward_box1_active.png':'./img/reward_box1.png'" alt="">
+                    </li>
+                    <li :class="['reward_item',play_numbs >= 20?'active':'']">
+                        <img :src="play_numbs >= 20?'./img/reward_box2_active.png':'./img/reward_box2.png'" alt="">
+                    </li>
+                    <li :class="['reward_item',play_numbs >= 50?'active':'']">
+                        <img :src="play_numbs >= 50?'./img/reward_box3_active.png':'./img/reward_box3.png'" alt="">
+                    </li>
+                    <li :class="['reward_item',play_numbs >= 65?'active':'']">
+                        <img :src="play_numbs >= 65?'./img/reward_box1_active.png':'./img/reward_box1.png'" alt="">
+                    </li>
+                  
+                </ul>
+                <div class="timeline">
+                    <div class="timeline_state" :style="`width: ${timelineState}%;`"></div>
+                </div>
+                <ul class="timer_list">
+
+                    <li :class="['reward_item',play_numbs >= 10?'active':'']">10times</li>
+                    <li :class="['reward_item',play_numbs >= 20?'active':'']">20times</li>
+                    <li :class="['reward_item',play_numbs >= 50?'active':'']">50times</li>
+                    <li :class="['reward_item',play_numbs >= 60?'active':'']">65times</li>
+                </ul>
+            </div>
 
         </div>
+
+        <div class="mask" v-show="is_rules || is_record"></div>
+        <div class="mask_body" v-show="is_rules">
+            <div class="mask_close" @click="this.is_rules= false;"></div>
+            <div class="mask_title">Game Rules</div>
+            <div class="mask_rules">
+                <p><span class="rules_number">1</span>Everyone can get prize every day by the lucky spins.</p>
+                <p><span class="rules_number">2</span>Each extraction costs ONE lucky draw chance.</p>
+                <p><span class="rules_number">3</span>Make sure watch the whole video, otherwise you wil lose one lucky draw chance without any prize.</p>
+                <p><span class="rules_number">4</span>The more lucky draw you join,the more possibility you can get additional rewards.</p>
+                <p><span class="rules_number">5</span>The lucky spins will be reset at 0:00 every day.</p>
+            </div>
+            <div class="mask_btn"@click="this.is_rules= false;">Confirmation</div>
+        </div>
+
+        <div class="mask_body" v-show="is_record">
+            <div class="mask_close"@click="this.is_record= false;"></div>
+            <div class="mask_title">Draw Records</div>
+            <div class="mask_table">
+                <table class="table">
+                    <thead>
+                        <tr><th>Reward</th><th>Time</th></tr>
+                    </thead>
+                    <tbody class="tbody">
+                        <tr>
+                            <td>100 Diamond</td>
+                            <td>2022/03/26  09:28</td>
+                        </tr>
+                        <tr>
+                            <td>100 Diamond</td>
+                            <td>2022/03/26  09:28</td>
+                        </tr>
+                        <tr>
+                            <td>100 Diamond</td>
+                            <td>2022/03/26  09:28</td>
+                        </tr>
+                        <tr>
+                            <td>100 Diamond</td>
+                            <td>2022/03/26  09:28</td>
+                        </tr>
+                        <tr>
+                            <td>100 Diamond</td>
+                            <td>2022/03/26  09:28</td>
+                        </tr>
+                        <tr>
+                            <td>100 Diamond</td>
+                            <td>2022/03/26  09:28</td>
+                        </tr>
+                        <tr>
+                            <td>100 Diamond</td>
+                            <td>2022/03/26  09:28</td>
+                        </tr>
+                        <tr>
+                            <td>100 Diamond</td>
+                            <td>2022/03/26  09:28</td>
+                        </tr>
+                        <tr>
+                            <td>100 Diamond</td>
+                            <td>2022/03/26  09:28</td>
+                        </tr>
+                        <tr>
+                            <td>100 Diamond</td>
+                            <td>2022/03/26  09:28</td>
+                        </tr>
+                        <tr>
+                            <td>100 Diamond</td>
+                            <td>2022/03/26  09:28</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="mask_btn"@click="this.is_record= false;">Confirmation</div>
+        </div>
     </div>
+    <script src="./js/vue.global.js"></script>
+    <script>
+        const app = {
+            data() {
+                return {
+                    is_rules:false,
+                    is_record:false,
+                    have_numbers:65,
+                    play_numbs:0,
+                    rotate_num:0,
+                    timerId:-1,
+                    is_play:true,
+                    
+                }
+                
+            },
+            computed:{
+                timelineState(){
+                    let state = 0;
+                    if(this.play_numbs >=10){
+                        state =  20
+                    }
+                    if(this.play_numbs >=20){
+                        state =  50
+                    } 
+                    if(this.play_numbs >=50){
+                        state =  80
+                    }
+                    if(this.play_numbs >=65){
+                        state =  100
+                    }
+                    
+                    return state;
+                   
+                },
+            },
+            methods:{
+              
+                play(){
+                    if(this.is_play){
+                        --this.have_numbers;
+                        ++this.play_numbs;
+
+                        this.is_play =false;
+                        const DEG = 900;
+                        const random = Math.floor( Math.random() * 6 ) + 1;
+                        this.rotate_num = this.rotate_num +  DEG + random * 60;
+
+                        this.timer = setTimeout(()=>{
+                            this.is_play = true;
+                            alert(`恭喜你获得${random}等奖`)
+                        },2000)
+                    }
+                }
+            }
+
+        }
+
+        Vue.createApp(app).mount('#app')
+    </script>
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+

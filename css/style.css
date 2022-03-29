@@ -36,6 +36,7 @@ html,body {
 body{
     position: relative;
     background: url(../img/bg.jpg) no-repeat left top/cover #5c09da; 
+    padding-bottom: 2.4rem;
 }
 .show_rules{
     position: absolute;
@@ -123,7 +124,7 @@ body{
     width: 1.84rem;height: 1.4667rem;
     background: url(../img/game_badge.png) no-repeat center/100% 100%;
     top: 3px;
-    z-index: 3;
+    z-index: 4;
 }
 .game_light{
     will-change: background;
@@ -144,7 +145,7 @@ body{
     }
 }
 .game_panel{
-    will-change: tra;
+    will-change: transform;
     position: relative;
     display: flex;
     align-items: center;
@@ -152,11 +153,15 @@ body{
     width: 7.2667rem;
     height: 7.2667rem;
     background: url(../img/panel_bg.png) no-repeat center/100% 100%;
+    transform: rotate(0deg);
+    transition:transform 2s ease-in-out;
+    z-index: 3;
 }
 .game_play{
     position: absolute;
     width: 2.8667rem;
     height: 2.8667rem;
+    z-index: 9;
 }
 .game_play >img{
     width: 100%;height: 100%;
@@ -227,7 +232,7 @@ body{
     text-indent: 0.2667rem;
 }
 .rewards_box{
-    margin: 1.0667rem 0.4rem 0;
+    margin: 1.3333rem 0.4rem 0;
     background-color: #fff;
     border-radius: 0.16rem;
     padding: 0 0.4rem;
@@ -247,6 +252,152 @@ body{
    color: #919191;
    margin-left: auto;
 }
+.reward_list{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.4667rem;
+}
+.timer_list{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.1333rem;
+}
+.reward_item{
+    width:25%;height: 1rem;position: relative;text-align: center;
+}
+
+.reward_list .active::after{
+    content: "";
+    position: absolute;
+    width: 0.4rem;height: 0.4rem;
+    background-color: #7e26d2;
+    border-radius: 50%;
+    bottom: -0.6133rem;
+    margin-left: -0.2rem;
+    z-index: 9;
+}
+.reward_list .active>img{
+    animation: reward .25s ease-in-out infinite alternate;
+}
+.reward_item >img{
+    width: 0.8533rem;
+    margin: 0 auto;
+}
+
+@keyframes reward{
+    0%{
+        transform: rotate(-10deg);
+    }
+    100%{
+        transform: rotate(10deg);
+    }
+}
+.reward_item:nth-child(1){
+    left: -0.2667rem;
+}
+.reward_item:nth-child(2){
+    left: -0.0667rem;
+}
+.reward_item:nth-child(3){
+    left:0.2rem;
+}
+.reward_item:nth-child(4){
+    left: 0.4rem;
+}
+.timeline{
+    position: relative;
+    margin-top: 0.2rem;
+    height: 0.4rem;
+    background: url(../img/timeline_bg.png) no-repeat center/100% 100%;  
+}
+.timeline_state{
+    position: absolute;
+    height:0.2rem;
+    background-color: #7e26d2;
+    margin-top: 0.1067rem;
+    border-radius: 0.2rem;
+    transition: width .2s ease-in-out;
+}
+.timer_list .active{
+    color: #7e26d2;
+}
+.mask{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;height: 100%;
+    background-color: rgba(0,0,0,.76);
+    z-index: 99;
+}
+.mask_body{
+    position: fixed;
+    z-index: 999;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 8.48rem;border-radius: 0.24rem;
+    background-color: #fff;
+}
+.mask_close{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 1.1733rem;height: 1.1733rem;
+    background: url(../img/icon_close.png) no-repeat center/0.4533rem 0.4533rem;
+}
+.mask_title{
+    font-size: 0.6133rem;font-weight: bold;text-align: center;
+    margin-top: 1.0667rem;
+}
+.mask_rules{
+ font-size: 0.4267rem;
+ padding: 0 0.5333rem;
+}
+.mask_rules >p{
+    margin-top: 0.5333rem;
+}
+.rules_number{
+    display: inline-block;
+    width: 0.4267rem;height: 0.4267rem;
+    border-radius: 50%;
+    font-size: 0.3467rem;color: #fff;
+    line-height: 0.4267rem;
+    background-color: #4b00d9;
+    text-align: center;
+    text-indent: -1px;
+    margin-right: 0.16rem;
+}
+.mask_btn{
+    width: 7.0667rem;height: 1.1733rem;
+    border-radius: 1.1733rem;
+    background-color: #4b00d9;
+    color: #fff;font-size: 0.4267rem;
+    margin: 0.5333rem auto;
+    text-align: center;
+    line-height: 1.1733rem;
+}
+.mask_table{
+    padding: 0.6667rem 0.6667rem 0;
+    height: 8rem;
+    overflow: auto;
+}
+.mask_table .table{
+  width: 100%;
+  text-align: left;
+}
+
+.mask_table .table th{
+    background-color: #eeeeee;
+}
+.mask_table .table tr{
+    background-color: #f9f9f9;
+   border-top: 1px solid #fff;
+}
+.mask_table .table td,.mask_table .table th{
+    height: 1.0667rem;padding-left: 0.2667rem;
+}
+
+
 /*电脑访问优化*/
 @media only screen and (min-width: 1024px){
     html{
